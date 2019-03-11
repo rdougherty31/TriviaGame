@@ -7,7 +7,7 @@ var questions = [
         option4: "Cherry Tree",
         correctAnswer: "Moon Tree",
         userAnswer: "",
-        alreadyAnswered: false
+        alreadyUsed: false
     },
     quest2 = {
         question: "Who’s brain is on display at the mutter museum?",
@@ -17,7 +17,7 @@ var questions = [
         option4: "William Siddis",
         correctAnswer: "Albert Einstein",
         userAnswer: "",
-        alreadyAnswered: false
+        alreadyUsed: false
     },
     quest3 = {
         question: "In what year did the Eagles help make the world’s largest cheesesteak?",
@@ -27,7 +27,7 @@ var questions = [
         option4: "1997",
         correctAnswer: "1988",
         userAnswer: "",
-        alreadyAnswered: false
+        alreadyUsed: false
     },
     quest4 = {
         question: "Referred to as the “Mural Capital of the USA”, Philly is home to over how many outdoor murals?",
@@ -37,7 +37,7 @@ var questions = [
         option4: "2000",
         correctAnswer: "2000",
         userAnswer: "",
-        alreadyAnswered: false
+        alreadyUsed: false
     },
     quest5 = {
         question: "Which of the following was Philadelphia NOT the first to establish in America?",
@@ -47,7 +47,7 @@ var questions = [
         option4: "Daily Newspaper",
         correctAnswer: "Professional Sports Team",
         userAnswer: "",
-        alreadyAnswered: false
+        alreadyUsed: false
     },
     quest6 = {
         question: "Which of Philly’s theaters is the oldest continually running theater of all English speaking countries in the world?",
@@ -57,7 +57,7 @@ var questions = [
         option4: "Fox Theater",
         correctAnswer: "Walnut Street Theater",
         userAnswer: "",
-        alreadyAnswered: false
+        alreadyUsed: false
     },
     quest7 = {
         question: "Home to the first general-use computer, how much did this Philly-born device weigh?",
@@ -67,7 +67,7 @@ var questions = [
         option4: "27 pounds",
         correctAnswer: "27 pounds",
         userAnswer: "",
-        alreadyAnswered: false
+        alreadyUsed: false
     },
     quest8 = {
         question: "What was Philly’s very first business?",
@@ -77,7 +77,7 @@ var questions = [
         option4: "Geno's Cheesesteaks",
         correctAnswer: "Philadelphia Brewing Company",
         userAnswer: "",
-        alreadyAnswered: false
+        alreadyUsed: false
     },
     quest9 = {
         question: "City Hall was the tallest building in America until what year?",
@@ -87,7 +87,7 @@ var questions = [
         option4: "1967",
         correctAnswer: "1908",
         userAnswer: "",
-        alreadyAnswered: false
+        alreadyUsed: false
     },
     quest10 = {
         question: "Bartram's Garden, the oldest botanical garden in North America, consists of how many acres?",
@@ -97,7 +97,7 @@ var questions = [
         option4: "87",
         correctAnswer: "45",
         userAnswer: "",
-        alreadyAnswered: false
+        alreadyUsed: false
     }
 ];
 var gameStats = {
@@ -108,19 +108,21 @@ var gameStats = {
 };
 var intervalId;
 var ranNumber;
-var time = 30;
+var time = 5;
 var timerStarted = false;
 var currentQues;
+var totalQuestions = 0;
 
 function resetGame() {
     gameStats.correct = 0;
     gameStats.incorrect = 0;
     gameStats.answered = 0;
-    gameStats.unanswered = questions.length;
+    gameStats.unanswered = 0;
+    totalQuestions = 0;
     timerStarted = false;
-    time = 30;
+    time = 5;
     for (var i=0; i<questions.length; i++) {
-        questions[i].alreadyAnswered = false;
+        questions[i].alreadyUsed = false;
         questions[i].userAnswer = "";
     }
 }
@@ -136,8 +138,8 @@ function playGame() {
     $(".gameOver").css("display","none");
     $(".playGame").css("display","block");
     $("#timer").append(time + " seconds").css("display", "block");
-    startClock();
     generateQues();
+
 }
 function startClock() {
     if (!timerStarted) {
@@ -150,16 +152,21 @@ function countDown() {
         time--;
         $("#timer").text("Time Remaining: " + time + " seconds");
     } else if (time === 0) {
-        clearInterval(intervalId);
-        alert("Time's Up!");
-        gameOver();
+        gameStats.unanswered++;
+        totalQuestions++;
+        checkGameOver();
+        alert("Time's Up! The correct answer is "+currentQues.correctAnswer+".");
     }
 }
 function generateQues() {
     $(".currentQuestion").css("border", "none");
+    clearInterval(intervalId);
+    timerStarted = false;
+    time = 5;
+    startClock();
     ranNumber = Math.floor(Math.random() * 10);
     currentQues = questions[ranNumber];
-    if (!currentQues.alreadyAnswered) {
+    if (!currentQues.alreadyUsed) {
         $("#result").css("display", "none");
         $(".currentQuestion").css("display", "block");
         $("#question").text(currentQues.question);
@@ -171,6 +178,7 @@ function generateQues() {
         $("#option2").unbind("click").click(option2);
         $("#option3").unbind("click").click(option3);
         $("#option4").unbind("click").click(option4);
+        currentQues.alreadyUsed = true;
     } else {
         generateQues();
     }
@@ -179,28 +187,28 @@ function option1() {
     $(".currentQuestion").css("border", "none");
     $("#option1").css("border", "1px solid #000");
     currentQues.userAnswer = currentQues.option1;
-    currentQues.alreadyAnswered = true;
+    // currentQues.alreadyAnswered = true;
     checkAnswer();
 }
 function option2() {
     $(".currentQuestion").css("border", "none");
     $("#option2").css("border", "1px solid #000");
     currentQues.userAnswer = currentQues.option2;
-    currentQues.alreadyAnswered = true;
+    // currentQues.alreadyAnswered = true;
     checkAnswer();
 }
 function option3() {
     $(".currentQuestion").css("border", "none");
     $("#option3").css("border", "1px solid #000");
     currentQues.userAnswer = currentQues.option3;
-    currentQues.alreadyAnswered = true;
+    // currentQues.alreadyAnswered = true;
     checkAnswer();
 }
 function option4() {
     $(".currentQuestion").css("border", "none");
     $("#option4").css("border", "1px solid #000");
     currentQues.userAnswer = currentQues.option4;
-    currentQues.alreadyAnswered = true;
+    // currentQues.alreadyAnswered = true;
     checkAnswer();
 }
 function checkAnswer() {
@@ -208,23 +216,24 @@ function checkAnswer() {
        $("#result").text("You are correct!").css("display","block");
         gameStats.correct++;
         gameStats.answered++;
-        gameStats.unanswered--;
     } else {
         $("#result").text("Nice try. The correct answer is: " + currentQues.correctAnswer + ".").css("display", "block");
         gameStats.incorrect++;
         gameStats.answered++;
-        gameStats.unanswered--;
     }
+    totalQuestions++;
     checkGameOver();
 }
 function checkGameOver() {
-    if (gameStats.answered === 10) {
-        var playTime = 30 - time;
-        alert("Great Job! You answered every question in "+playTime+" seconds!");
+    if (totalQuestions === 10) {
+        alert("Game Over!");
         gameOver();
         clearInterval(intervalId);
+        timerStarted = false;
     } else {
-        setTimeout(generateQues, 1000);
+        clearInterval(intervalId);
+        timerStarted = false;
+        setTimeout(generateQues, 500);
     }    
 }
 function gameOver() {
