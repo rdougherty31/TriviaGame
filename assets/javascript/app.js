@@ -1,3 +1,4 @@
+//Global variables
 var questions = [
     quest1 = {
         question: "Which type of tree was planted in Philadelphia for the U.S. bicentennial?",
@@ -60,7 +61,7 @@ var questions = [
         alreadyUsed: false
     },
     quest7 = {
-        question: "Home to the first general-use computer, how much did this Philly-born device weigh?",
+        question: "Born in Philly, how much did the first general-use computer weigh?",
         option1: "18 pounds",
         option2: "54 pounds",
         option3: "36 pounds",
@@ -108,11 +109,11 @@ var gameStats = {
 };
 var intervalId;
 var ranNumber;
-var time = 5;
+var time = 10;
 var timerStarted = false;
 var currentQues;
 var totalQuestions = 0;
-
+//Reset function
 function resetGame() {
     gameStats.correct = 0;
     gameStats.incorrect = 0;
@@ -120,12 +121,13 @@ function resetGame() {
     gameStats.unanswered = 0;
     totalQuestions = 0;
     timerStarted = false;
-    time = 5;
+    time = 10;
     for (var i=0; i<questions.length; i++) {
         questions[i].alreadyUsed = false;
         questions[i].userAnswer = "";
     }
 }
+//Once DOM ready, button onclick function will start game
 $(document).ready(
     function buttonClick() {
         $("#playButton").click(playGame);
@@ -141,6 +143,7 @@ function playGame() {
     generateQues();
 
 }
+//functions for timer per questions
 function startClock() {
     if (!timerStarted) {
         intervalId = setInterval(countDown, 1000);
@@ -158,11 +161,13 @@ function countDown() {
         alert("Time's Up! The correct answer is "+currentQues.correctAnswer+".");
     }
 }
+//Generates & displays a random question from questions array
+//Sets onclick functions for each multiple choice button clicked
 function generateQues() {
     $(".currentQuestion").css("border", "none");
     clearInterval(intervalId);
     timerStarted = false;
-    time = 5;
+    time = 10;
     startClock();
     ranNumber = Math.floor(Math.random() * 10);
     currentQues = questions[ranNumber];
@@ -211,6 +216,7 @@ function option4() {
     // currentQues.alreadyAnswered = true;
     checkAnswer();
 }
+//Checks if user chose the correct answer & increases/decreases gameStats accordingly
 function checkAnswer() {
     if (currentQues.userAnswer === currentQues.correctAnswer) {
        $("#result").text("You are correct!").css("display","block");
@@ -224,6 +230,7 @@ function checkAnswer() {
     totalQuestions++;
     checkGameOver();
 }
+//Checks if game is over
 function checkGameOver() {
     if (totalQuestions === 10) {
         alert("Game Over!");
@@ -236,6 +243,7 @@ function checkGameOver() {
         setTimeout(generateQues, 500);
     }    
 }
+//Displays user's stats if game is over as well as a play again button to play again
 function gameOver() {
     $("#correct").text("Correct Answers: "+gameStats.correct);
     $("#incorrect").text("Incorrect Answers: "+gameStats.incorrect);
