@@ -164,6 +164,7 @@ function countDown() {
 //Generates & displays a random question from questions array
 //Sets onclick functions for each multiple choice button clicked
 function generateQues() {
+    $("#heading").css("display","block");
     $(".currentQuestion").css("border", "none");
     clearInterval(intervalId);
     timerStarted = false;
@@ -192,37 +193,37 @@ function option1() {
     $(".currentQuestion").css("border", "none");
     $("#option1").css("border", "1px solid #000");
     currentQues.userAnswer = currentQues.option1;
-    // currentQues.alreadyAnswered = true;
     checkAnswer();
 }
 function option2() {
     $(".currentQuestion").css("border", "none");
     $("#option2").css("border", "1px solid #000");
     currentQues.userAnswer = currentQues.option2;
-    // currentQues.alreadyAnswered = true;
     checkAnswer();
 }
 function option3() {
     $(".currentQuestion").css("border", "none");
     $("#option3").css("border", "1px solid #000");
     currentQues.userAnswer = currentQues.option3;
-    // currentQues.alreadyAnswered = true;
     checkAnswer();
 }
 function option4() {
     $(".currentQuestion").css("border", "none");
     $("#option4").css("border", "1px solid #000");
     currentQues.userAnswer = currentQues.option4;
-    // currentQues.alreadyAnswered = true;
     checkAnswer();
 }
 //Checks if user chose the correct answer & increases/decreases gameStats accordingly
 function checkAnswer() {
     if (currentQues.userAnswer === currentQues.correctAnswer) {
+        $("#heading").css("display","none");
+        $(".currentQuestion").css("display","none");
        $("#result").text("You are correct!").css("display","block");
         gameStats.correct++;
         gameStats.answered++;
     } else {
+        $("#heading").css("display","none");
+        $(".currentQuestion").css("display","none");
         $("#result").text("Nice try. The correct answer is: " + currentQues.correctAnswer + ".").css("display", "block");
         gameStats.incorrect++;
         gameStats.answered++;
@@ -240,7 +241,7 @@ function checkGameOver() {
     } else {
         clearInterval(intervalId);
         timerStarted = false;
-        setTimeout(generateQues, 500);
+        setTimeout(generateQues, 2000);
     }    
 }
 //Displays user's stats if game is over as well as a play again button to play again
