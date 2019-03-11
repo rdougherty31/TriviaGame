@@ -108,53 +108,38 @@ var gameStats = {
 };
 var intervalId;
 var ranNumber;
-var time = 300;
-var correct = 0;
-var incorrect = 0;
+var time = 30;
 var timerStarted = false;
 var currentQues;
 
-
-// function resetGame() {
-//     gameStats.correct = 0;
-//     gameStats.incorrect = 0;
-//     gameStats.answered = 0;
-//     gameStats.unanswered = questions.length;
-//     timerStarted = false;
-//     time = 30;
-// }
-//create a "Play" button to begin game
+function resetGame() {
+    gameStats.correct = 0;
+    gameStats.incorrect = 0;
+    gameStats.answered = 0;
+    gameStats.unanswered = questions.length;
+    timerStarted = false;
+    time = 30;
+    for (var i=0; i<questions.length; i++) {
+        questions[i].alreadyAnswered = false;
+        questions[i].userAnswer = "";
+    }
+}
 $(document).ready(
-    //play game button onclick fxn
     function buttonClick() {
         $("#playButton").click(playGame);
+        $("#playAgain").click(playGame);
 });
 //game function
 function playGame() {
-    console.log("playGame fxn starting");
-    //hide play button
-    // resetGame();
+    resetGame();
     $("#playButton").css("display", "none");
     $(".gameOver").css("display","none");
     $(".playGame").css("display","block");
-    //generate timer that counts down from 30 seconds & display on UI
     $("#timer").append(time + " seconds").css("display", "block");
     startClock();
     generateQues();
-    // $("#playAgain").click(playGame);
-    //generate random question to display with 4 choices
-    //onclick of choice checks if userAnswer === correctAnswer
-    //if correct, increases correct variable by 1
-    //if incorrect, increases incorrect variable by 1
-    //repeats this until time runs out
-    //when time runs out, finds the number of unaswered questions and 
-    //displays it on the UI along with the correct # answered & incorrect # answered
-
-    //new game button appears
-    // $("#playButton").css("display","block");
 }
 function startClock() {
-    console.log("startClock fxn starting");
     if (!timerStarted) {
         intervalId = setInterval(countDown, 1000);
         timerStarted = true;
@@ -168,19 +153,13 @@ function countDown() {
         clearInterval(intervalId);
         alert("Time's Up!");
         gameOver();
-        console.log(gameStats);
     }
 }
 function generateQues() {
-    console.log("generating question");
     $(".currentQuestion").css("border", "none");
     ranNumber = Math.floor(Math.random() * 10);
     currentQues = questions[ranNumber];
     if (!currentQues.alreadyAnswered) {
-       console.log("NOT ALREADY ANSWERED");
-       console.log(currentQues);
-       console.log(currentQues.question);
-       console.log(currentQues.userAnswer);
         $("#result").css("display", "none");
         $(".currentQuestion").css("display", "block");
         $("#question").text(currentQues.question);
@@ -192,9 +171,7 @@ function generateQues() {
         $("#option2").unbind("click").click(option2);
         $("#option3").unbind("click").click(option3);
         $("#option4").unbind("click").click(option4);
-        console.log(currentQues);
     } else {
-       console.log("ALREADY ANSWERED THIS QUESTION");
         generateQues();
     }
 }
@@ -204,8 +181,6 @@ function option1() {
     currentQues.userAnswer = currentQues.option1;
     currentQues.alreadyAnswered = true;
     checkAnswer();
-   console.log(currentQues.userAnswer);
-   console.log(currentQues);
 }
 function option2() {
     $(".currentQuestion").css("border", "none");
@@ -213,8 +188,6 @@ function option2() {
     currentQues.userAnswer = currentQues.option2;
     currentQues.alreadyAnswered = true;
     checkAnswer();
-   console.log(currentQues.userAnswer);
-   console.log(currentQues);
 }
 function option3() {
     $(".currentQuestion").css("border", "none");
@@ -222,8 +195,6 @@ function option3() {
     currentQues.userAnswer = currentQues.option3;
     currentQues.alreadyAnswered = true;
     checkAnswer();
-   console.log(currentQues.userAnswer);
-   console.log(currentQues);
 }
 function option4() {
     $(".currentQuestion").css("border", "none");
@@ -231,25 +202,18 @@ function option4() {
     currentQues.userAnswer = currentQues.option4;
     currentQues.alreadyAnswered = true;
     checkAnswer();
-   console.log(currentQues.userAnswer);
-   console.log(currentQues);
 }
 function checkAnswer() {
-    console.log("checkAnswer fxn starting");
     if (currentQues.userAnswer === currentQues.correctAnswer) {
-        $("#result").text("You are correct!");
-       console.log("correct guess");
+       $("#result").text("You are correct!").css("display","block");
         gameStats.correct++;
         gameStats.answered++;
         gameStats.unanswered--;
-       console.log(gameStats);
     } else {
         $("#result").text("Nice try. The correct answer is: " + currentQues.correctAnswer + ".").css("display", "block");
-       console.log("wrong guess");
         gameStats.incorrect++;
         gameStats.answered++;
         gameStats.unanswered--;
-       console.log(gameStats);
     }
     checkGameOver();
 }
@@ -258,15 +222,15 @@ function checkGameOver() {
         var playTime = 30 - time;
         alert("Great Job! You answered every question in "+playTime+" seconds!");
         gameOver();
-       console.log(gameStats);
+        clearInterval(intervalId);
     } else {
         setTimeout(generateQues, 1000);
     }    
 }
 function gameOver() {
-    $("#correct").append(gameStats.correct);
-    $("#incorrect").append(gameStats.incorrect);
-    $("#unanswered").append(gameStats.unanswered);
+    $("#correct").text("Correct Answers: "+gameStats.correct);
+    $("#incorrect").text("Incorrect Answers: "+gameStats.incorrect);
+    $("#unanswered").text("Unanswered: "+gameStats.unanswered);
     $(".playGame").css("display","none");
     $(".gameOver").css("display","block");
 }

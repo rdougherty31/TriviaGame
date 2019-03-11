@@ -1,12 +1,38 @@
-.playGame, .gameOver {
+.playGame, .gameOver, #timer {
     display: none;
 }
 body {
     background: url(../images/whitepaintBG.jpg);
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: bolder;
-    color: maroon;
+    color: black;
+}
+#heading {
+    background: #c5c5c5;
+    margin: .5rem auto;
+    border: 2px dashed orange;
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+#timer {
+    color: red;
+}
+#playButton, #playAgain {
+    margin: 1rem;
+    width: 15rem;
+    height: 10rem;
+    margin-top: 10rem;
+    font-size: 1rem;
+}
+#playAgain {
+    margin: 1rem;
+}
+.playGame {
+    padding: 0;
 }
 div {
     margin: 1rem;
@@ -19,15 +45,17 @@ div {
     padding: 2rem 1rem;
     font-size: 1.5rem;
     box-shadow: 1rem 1rem grey;
+    font-weight: bold;
 }
 #question {
     background: #fff;
-    font-weight: bold;
     font-size: 1.5rem;
-    width: 45%;
-    padding: 8rem 1rem;
+    width: 65%;
+    padding: 5rem 1rem;
     border-radius: 0;
     box-shadow: 0 0 .5rem inset #858181;
+    font-weight: normal;
+    margin-top:13rem;
 }
 #option1 {
     background: rgba(247, 138, 69, .8);
@@ -42,27 +70,49 @@ div {
     background: rgba(185, 222, 197, .8);
 }
 #option1:hover {
-    box-shadow: 0 0 2rem inset maroon;
+    box-shadow: 0 0 2rem inset black;
 }
 #option2:hover {
-    box-shadow: 0 0 2rem inset maroon;
+    box-shadow: 0 0 2rem inset black;
 }
 #option3:hover {
-    box-shadow: 0 0 2rem inset maroon;
+    box-shadow: 0 0 2rem inset black;
 }
 #option4:hover {
-    box-shadow: 0 0 2rem inset maroon;
+    box-shadow: 0 0 2rem inset black;
 }
 .gameOver {
     background: #fff;
-    font-size: 1.5rem;
-    box-shadow: 0 0 .2rem inset maroon;
+    font-size: 1rem;
+    box-shadow: 0 0 .2rem inset grey;
     width: 45%;
-    margin: auto;
+    margin: 1rem auto;
+    padding: 2rem;
+    margin-top: 13rem;
 }
 #gameOver {
     color: rgb(247, 138, 69);
+    font-weight: bold;
+    padding: 1rem;
+    margin: 1rem;
+    font-size: 1.5rem;
 }
 #correct, #incorrect, #unanswered  {
-    color: rgb(0, 145, 138)
+    color: rgb(0, 145, 138);
+    padding: 1rem;
+    margin: 1rem;
+
+}
+#result {
+    color: rgb(0,145,138);
+    font-size: 1.5rem;
+    background: #c5c5c5;
+    margin: 1rem auto;
+    padding: 2rem;
+    width: 75%;
+    border-top: 1px solid #c5c5c53b;
+    border-bottom: 1px solid #c5c5c53b;
+    background-image: linear-gradient(to right,#c5c5c53b,#c5c5c5,#c5c5c53b);
+    border-radius: 50%;
+    box-shadow: 0 0 .2rem inset grey;
 }
