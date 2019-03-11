@@ -1,101 +1,101 @@
 var questions = [
     quest1 = {
-        question: "Question 1",
-        option1: "A",
-        option2: "B",
-        option3: "C",
-        option4: "D",
-        correctAnswer: "A",
+        question: "Which type of tree was planted in Philadelphia for the U.S. bicentennial?",
+        option1: "Moon Tree",
+        option2: "Rainbow Eucalyptus Tree",
+        option3: "Angel Oak Tree",
+        option4: "Cherry Tree",
+        correctAnswer: "Moon Tree",
         userAnswer: "",
         alreadyAnswered: false
     },
     quest2 = {
-        question: "Question 2",
-        option1: "A",
-        option2: "B",
-        option3: "C",
-        option4: "D",
-        correctAnswer: "B",
+        question: "Who’s brain is on display at the mutter museum?",
+        option1: "Sigmund Freud",
+        option2: "Albert Einstein",
+        option3: "Marie Curie",
+        option4: "William Siddis",
+        correctAnswer: "Albert Einstein",
         userAnswer: "",
         alreadyAnswered: false
     },
     quest3 = {
-        question: "Question 3",
-        option1: "A",
-        option2: "B",
-        option3: "C",
-        option4: "D",
-        correctAnswer: "C",
+        question: "In what year did the Eagles help make the world’s largest cheesesteak?",
+        option1: "1956",
+        option2: "1995",
+        option3: "1988",
+        option4: "1997",
+        correctAnswer: "1988",
         userAnswer: "",
         alreadyAnswered: false
     },
     quest4 = {
-        question: "Question 4",
-        option1: "A",
-        option2: "B",
-        option3: "C",
-        option4: "D",
-        correctAnswer: "D",
+        question: "Referred to as the “Mural Capital of the USA”, Philly is home to over how many outdoor murals?",
+        option1: "1500",
+        option2: "1000",
+        option3: "500",
+        option4: "2000",
+        correctAnswer: "2000",
         userAnswer: "",
         alreadyAnswered: false
     },
     quest5 = {
-        question: "Question 5",
-        option1: "A",
-        option2: "B",
-        option3: "C",
-        option4: "D",
-        correctAnswer: "A",
+        question: "Which of the following was Philadelphia NOT the first to establish in America?",
+        option1: "Medical School",
+        option2: "Zoo",
+        option3: "Professional Sports Team",
+        option4: "Daily Newspaper",
+        correctAnswer: "Professional Sports Team",
         userAnswer: "",
         alreadyAnswered: false
     },
     quest6 = {
-        question: "Question 6",
-        option1: "A",
-        option2: "B",
-        option3: "C",
-        option4: "D",
-        correctAnswer: "B",
+        question: "Which of Philly’s theaters is the oldest continually running theater of all English speaking countries in the world?",
+        option1: "Walnut Street Theater",
+        option2: "Academy of Music",
+        option3: "Kimmel Center",
+        option4: "Fox Theater",
+        correctAnswer: "Walnut Street Theater",
         userAnswer: "",
         alreadyAnswered: false
     },
     quest7 = {
-        question: "Question 7",
-        option1: "A",
-        option2: "B",
-        option3: "C",
-        option4: "D",
-        correctAnswer: "C",
+        question: "Home to the first general-use computer, how much did this Philly-born device weigh?",
+        option1: "18 pounds",
+        option2: "54 pounds",
+        option3: "36 pounds",
+        option4: "27 pounds",
+        correctAnswer: "27 pounds",
         userAnswer: "",
         alreadyAnswered: false
     },
     quest8 = {
-        question: "Question 8",
-        option1: "A",
-        option2: "B",
-        option3: "C",
-        option4: "D",
-        correctAnswer: "D",
+        question: "What was Philly’s very first business?",
+        option1: "Beneficial Bank",
+        option2: "Philadelphia Brewing Company",
+        option3: "Garfield Refining",
+        option4: "Geno's Cheesesteaks",
+        correctAnswer: "Philadelphia Brewing Company",
         userAnswer: "",
         alreadyAnswered: false
     },
     quest9 = {
-        question: "Question 9",
-        option1: "A",
-        option2: "B",
-        option3: "C",
-        option4: "D",
-        correctAnswer: "A",
+        question: "City Hall was the tallest building in America until what year?",
+        option1: "1908",
+        option2: "1954",
+        option3: "1923",
+        option4: "1967",
+        correctAnswer: "1908",
         userAnswer: "",
         alreadyAnswered: false
     },
     quest10 = {
-        question: "Question 10",
-        option1: "A",
-        option2: "B",
-        option3: "C",
-        option4: "D",
-        correctAnswer: "B",
+        question: "Bartram's Garden, the oldest botanical garden in North America, consists of how many acres?",
+        option1: "23",
+        option2: "104",
+        option3: "45",
+        option4: "87",
+        correctAnswer: "45",
         userAnswer: "",
         alreadyAnswered: false
     }
@@ -108,7 +108,7 @@ var gameStats = {
 };
 var intervalId;
 var ranNumber;
-var time = 30;
+var time = 300;
 var correct = 0;
 var incorrect = 0;
 var timerStarted = false;
@@ -201,7 +201,7 @@ function generateQues() {
 function option1() {
     $(".currentQuestion").css("border", "none");
     $("#option1").css("border", "1px solid #000");
-    currentQues.userAnswer = "A";
+    currentQues.userAnswer = currentQues.option1;
     currentQues.alreadyAnswered = true;
     checkAnswer();
    console.log(currentQues.userAnswer);
@@ -210,7 +210,7 @@ function option1() {
 function option2() {
     $(".currentQuestion").css("border", "none");
     $("#option2").css("border", "1px solid #000");
-    currentQues.userAnswer = "B";
+    currentQues.userAnswer = currentQues.option2;
     currentQues.alreadyAnswered = true;
     checkAnswer();
    console.log(currentQues.userAnswer);
@@ -219,7 +219,7 @@ function option2() {
 function option3() {
     $(".currentQuestion").css("border", "none");
     $("#option3").css("border", "1px solid #000");
-    currentQues.userAnswer = "C";
+    currentQues.userAnswer = currentQues.option3;
     currentQues.alreadyAnswered = true;
     checkAnswer();
    console.log(currentQues.userAnswer);
@@ -228,7 +228,7 @@ function option3() {
 function option4() {
     $(".currentQuestion").css("border", "none");
     $("#option4").css("border", "1px solid #000");
-    currentQues.userAnswer = "D";
+    currentQues.userAnswer = currentQues.option4;
     currentQues.alreadyAnswered = true;
     checkAnswer();
    console.log(currentQues.userAnswer);

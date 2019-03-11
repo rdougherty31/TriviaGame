@@ -1,7 +1,68 @@
-.currentQuestion {
-    width: 100px;
-    height: 50px;
-}
 .playGame, .gameOver {
     display: none;
+}
+body {
+    background: url(../images/whitepaintBG.jpg);
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    color: maroon;
+}
+div {
+    margin: 1rem;
+    padding: 1rem;
+}
+.currentQuestion {
+    width: 30%;
+    margin: 1rem auto;
+    border-radius: 50%;
+    padding: 2rem 1rem;
+    font-size: 1.5rem;
+    box-shadow: 1rem 1rem grey;
+}
+#question {
+    background: #fff;
+    font-weight: bold;
+    font-size: 1.5rem;
+    width: 45%;
+    padding: 8rem 1rem;
+    border-radius: 0;
+    box-shadow: 0 0 .5rem inset #858181;
+}
+#option1 {
+    background: rgba(247, 138, 69, .8);
+}
+#option2 {
+    background: rgba(254, 198, 77, .8);
+}
+#option3 {
+    background: rgba(0, 145, 138, .8);
+}
+#option4 {
+    background: rgba(185, 222, 197, .8);
+}
+#option1:hover {
+    box-shadow: 0 0 2rem inset maroon;
+}
+#option2:hover {
+    box-shadow: 0 0 2rem inset maroon;
+}
+#option3:hover {
+    box-shadow: 0 0 2rem inset maroon;
+}
+#option4:hover {
+    box-shadow: 0 0 2rem inset maroon;
+}
+.gameOver {
+    background: #fff;
+    font-size: 1.5rem;
+    box-shadow: 0 0 .2rem inset maroon;
+    width: 45%;
+    margin: auto;
+}
+#gameOver {
+    color: rgb(247, 138, 69);
+}
+#correct, #incorrect, #unanswered  {
+    color: rgb(0, 145, 138)
 }
