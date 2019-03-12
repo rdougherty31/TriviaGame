@@ -139,9 +139,8 @@ function playGame() {
     $("#playButton").css("display", "none");
     $(".gameOver").css("display","none");
     $(".playGame").css("display","block");
-    $("#timer").append(time + " seconds").css("display", "block");
+    $("#timer").text("Time Remaining: "+time + " seconds").css("display", "block");
     generateQues();
-
 }
 //functions for timer per questions
 function startClock() {
@@ -155,20 +154,25 @@ function countDown() {
         time--;
         $("#timer").text("Time Remaining: " + time + " seconds");
     } else if (time === 0) {
+        $("#heading").css("display","none");
+        $(".currentQuestion").css("display","none");
+       $("#result").text("Time's Up! The correct answer is "+currentQues.correctAnswer+".").css("display","block");
         gameStats.unanswered++;
         totalQuestions++;
         checkGameOver();
-        alert("Time's Up! The correct answer is "+currentQues.correctAnswer+".");
+        //alert("Time's Up! The correct answer is "+currentQues.correctAnswer+".");
     }
 }
 //Generates & displays a random question from questions array
 //Sets onclick functions for each multiple choice button clicked
+// ""+i
 function generateQues() {
-    $("#heading").css("display","block");
+    $("#timer").text("Time Remaining: "+ time + " seconds");
     $(".currentQuestion").css("border", "none");
     clearInterval(intervalId);
-    timerStarted = false;
     time = 10;
+    timerStarted = false;
+    $("#heading").css("display","block");
     startClock();
     ranNumber = Math.floor(Math.random() * 10);
     currentQues = questions[ranNumber];
@@ -228,6 +232,7 @@ function checkAnswer() {
         gameStats.incorrect++;
         gameStats.answered++;
     }
+    time = 10;
     totalQuestions++;
     checkGameOver();
 }
@@ -240,9 +245,8 @@ function checkGameOver() {
         timerStarted = false;
     } else {
         clearInterval(intervalId);
-        timerStarted = false;
         setTimeout(generateQues, 2000);
-    }    
+    }   
 }
 //Displays user's stats if game is over as well as a play again button to play again
 function gameOver() {

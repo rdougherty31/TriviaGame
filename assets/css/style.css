@@ -47,6 +47,7 @@ h1 {
 }
 div {
     margin: 1rem;
+    padding: 2rem .5rem;
     padding: 1rem;
 }
 .currentQuestion {
@@ -100,7 +101,6 @@ div {
     width: 45%;
     margin: 1rem auto;
     padding: 2rem;
-    margin-top: 13rem;
 }
 #gameOver {
     color: rgb(247, 138, 69);
@@ -124,8 +124,6 @@ div {
     width: 75%;
     border-top: 1px solid #c5c5c53b;
     border-bottom: 1px solid #c5c5c53b;
-    background-image: linear-gradient(to right,#c5c5c53b,#c5c5c5,#c5c5c53b);
-    border-radius: 50%;
     box-shadow: 0 0 .2rem inset grey;
 }
 hr {
@@ -182,3 +180,32 @@ hr {
     50% {background-color: rgb(0,145,138)}
     100% {background-color: grey;}
   }
+/* Media Queries */
+@media (max-width: 1300px) {
+    .currentQuestion, #question {
+        width: 75%;
+    }
+    .playGame {
+        margin-right: 5%;
+    }
+    #question {
+        padding: 3rem 1rem;
+    }
+    #result {
+        margin: 0 auto;
+    }
+}
+@media (max-width: 800px) {
+    .currentQuestion, #question {
+        width: 100%;
+        font-size: 1rem;
+    }
+    .playGame {
+        margin-right: 8%;
+    }
+}
+@media (max-width: 500px) {
+    .playGame {
+        margin-right: 10%;
+    }
+}
