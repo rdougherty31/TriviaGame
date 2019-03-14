@@ -215,6 +215,12 @@ hr {
         width: 100%;
         font-size: 1rem;
     }
+    .playGame {
+        margin-right: 7%;
+    }
+    #result {
+        margin: 0 auto;
+    }
     #playAgain {
         width: 10rem;
         height: 6rem;
@@ -224,9 +230,20 @@ hr {
     }
 }
 @media (max-width: 500px) {
+    .playGame {
+        margin-right: 9%;
+    }
+}
+@media (max-width: 500px) {
+    .playGame {
+        margin-right: 10%;
+    }
     #playAgain {
         width: 7rem;
         height: 5.75rem;
+    }
+    #result {
+        margin: 0 auto;
     }
     .swal-text {
         font-size: 1rem;
