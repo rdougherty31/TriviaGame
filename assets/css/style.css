@@ -131,6 +131,20 @@ hr {
     border: 0;
     border-top: 1px solid #ccc;
 }
+/*sweet alert css*/
+.swal-overlay {
+    background-color: rgba(0,0,0,.5);
+    border: 3px solid orange;
+}
+.swal-text {
+    font-size: 2rem;
+}
+.swal-button {
+    background-color: rgb(0, 145, 138);
+}
+.swal-footer {
+    text-align: center;
+}
 /*CSS Button Generator*/
 .myButton {
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -185,14 +199,15 @@ hr {
     .currentQuestion, #question {
         width: 75%;
     }
-    .playGame {
-        margin-right: 5%;
-    }
     #question {
         padding: 3rem 1rem;
     }
     #result {
         margin: 0 auto;
+    }
+    #playAgain {
+        width: 12rem;
+        height: 9rem;
     }
 }
 @media (max-width: 800px) {
@@ -200,12 +215,20 @@ hr {
         width: 100%;
         font-size: 1rem;
     }
-    .playGame {
-        margin-right: 8%;
+    #playAgain {
+        width: 10rem;
+        height: 6rem;
+    }
+    .swal-text {
+        font-size: 1.5rem;
     }
 }
 @media (max-width: 500px) {
-    .playGame {
-        margin-right: 10%;
+    #playAgain {
+        width: 7rem;
+        height: 5.75rem;
+    }
+    .swal-text {
+        font-size: 1rem;
     }
 }

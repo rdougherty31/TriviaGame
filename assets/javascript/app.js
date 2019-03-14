@@ -239,7 +239,7 @@ function checkAnswer() {
 //Checks if game is over
 function checkGameOver() {
     if (totalQuestions === 10) {
-        alert("Game Over!");
+        swal({text:"Game Over!",});
         gameOver();
         clearInterval(intervalId);
         timerStarted = false;
