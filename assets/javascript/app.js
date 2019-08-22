@@ -1,7 +1,7 @@
 //Global variables
 var questions = [
     quest1 = {
-        question: "Which type of tree was planted in Philadelphia for the U.S. bicentennial?",
+        question: "Which was planted in Philadelphia for the U.S. bicentennial?",
         option1: "Moon Tree",
         option2: "Rainbow Eucalyptus Tree",
         option3: "Angel Oak Tree",
@@ -11,7 +11,7 @@ var questions = [
         alreadyUsed: false
     },
     quest2 = {
-        question: "Who’s brain is on display at the mutter museum?",
+        question: "Who’s brain is on display at the Mutter Museum?",
         option1: "Sigmund Freud",
         option2: "Albert Einstein",
         option3: "Marie Curie",
@@ -41,7 +41,7 @@ var questions = [
         alreadyUsed: false
     },
     quest5 = {
-        question: "Which of the following was Philadelphia NOT the first to establish in America?",
+        question: "Philadelphia was the first in the U.S. to establish all of the following except..",
         option1: "Medical School",
         option2: "Zoo",
         option3: "Professional Sports Team",
@@ -81,7 +81,7 @@ var questions = [
         alreadyUsed: false
     },
     quest9 = {
-        question: "City Hall was the tallest building in America until what year?",
+        question: "City Hall was the tallest building in America until which year?",
         option1: "1908",
         option2: "1954",
         option3: "1923",
